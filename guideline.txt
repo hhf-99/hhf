@@ -1,0 +1,25 @@
+# Requirements
+Linux
+NVIDIA GPU 3090 + CUDA
+Python 3.9
+tqdm
+numpy==1.22.3
+opencv-python
+pytorch==1.12.1
+scipy==1.7.3
+torchvision==0.13.1
+timm==0.5.4
+==========================================
+# python main.py
+--train_ref_path /path/to/train
+--train_eha_path /path/to/train
+--Label_train_list.txt /txt/for/train
+--val_ref_path /path/to/val
+--val_eha_path /path/to/val
+--Label_val_list /txt/for/val
+--checkpoints_dir /path/for/save/ckpt
+==========================================
+# python test.py
+--test_ref_path /path/to/test
+--test_eha_path /path/to/test
+--Label_test_list /txt/for/test

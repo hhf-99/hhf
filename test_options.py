@@ -3,9 +3,9 @@ from base_options import BaseOptions
 class TestOptions(BaseOptions):
     def initialize(self):
         BaseOptions.initialize(self)
-        self._parser.add_argument('--test_ref_path', type=str, default='', help='path to reference images')
-        self._parser.add_argument('--test_eha_path', type=str, default='', help='path to enhancment images')
-        self._parser.add_argument('--test_list', type=str, default='', help='training data')
+        self._parser.add_argument('--test_ref_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/test/ref', help='path to reference images')
+        self._parser.add_argument('--test_eha_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/test/eha', help='path to enhancment images')
+        self._parser.add_argument('--test_list', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/test/Label_test_list.txt', help='training data')
         
         self._parser.add_argument('--batch_size', type=int, default=8, help='input batch size')
         self._parser.add_argument('--test_file_name', type=str, default='', help='txt path to save results')

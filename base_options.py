@@ -12,13 +12,13 @@ class BaseOptions():
 
     def initialize(self):
         # dataset path
-        self._parser.add_argument('--train_ref_path', type=str, default='', help='path to reference images')
-        self._parser.add_argument('--train_eha_path', type=str, default='', help='path to enhancment images')
-        self._parser.add_argument('--val_ref_path', type=str, default='', help='path to reference images')
-        self._parser.add_argument('--val_eha_path', type=str, default='', help='path to enhancment images')
-        self._parser.add_argument('--checkpoints_dir', type=str, default='', help='models are saved here')
-        self._parser.add_argument('--train_list', type=str, default='', help='training data')
-        self._parser.add_argument('--val_list', type=str, default='', help='testing data')
+        self._parser.add_argument('--train_ref_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/train/ref', help='path to reference images')
+        self._parser.add_argument('--train_eha_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/train/eha', help='path to enhancment images')
+        self._parser.add_argument('--val_ref_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/valid/ref', help='path to reference images')
+        self._parser.add_argument('--val_eha_path', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/valid/eha', help='path to enhancment images')
+        self._parser.add_argument('--checkpoints_dir', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/checkpoints', help='models are saved here')
+        self._parser.add_argument('--train_list', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/train/Label_train_list.txt', help='training data')
+        self._parser.add_argument('--val_list', type=str, default='/home/caolvchen/Desktop/hhf/pytorch/SDMP-Net/dataset/valid/Label_valid_list.txt', help='testing data')
         # experiment
         self._parser.add_argument('--name', type=str, default='sdmp_efid',
                                   help='name of the experiment. It decides where to store samples and models')

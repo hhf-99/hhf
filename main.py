@@ -24,7 +24,7 @@ class Train:
         self.create_model()
         self.init_saveoutput()
         self.init_data()
-        self.criterion = torch.nn.CrossEntropyLoss()  # 换为交叉熵损失
+        self.criterion = torch.nn.CrossEntropyLoss()  # 交叉熵损失
         self.optimizer = torch.optim.Adam([
             {'params': self.regressor.parameters(), 'lr': self.opt.learning_rate,
              'weight_decay': self.opt.weight_decay},
@@ -37,7 +37,7 @@ class Train:
         self.train()
 
     def create_model(self):
-        self.resnet152 = timm.create_model('resnet152', pretrained=True).cuda()  # 使用ResNet152
+        self.resnet152 = timm.create_model('resnet152', pretrained=True).cuda()
         if self.opt.patch_size == 8:
             self.vit = timm.create_model('vit_base_patch8_224', pretrained=True).cuda()
         else:
@@ -48,7 +48,7 @@ class Train:
     def init_saveoutput(self):
         self.save_output = SaveOutput()
         hook_handles = []
-        for layer in self.resnet152.modules():  # 修改为ResNet152
+        for layer in self.resnet152.modules():
             if isinstance(layer, Bottleneck):
                 handle = layer.register_forward_hook(self.save_output)
                 hook_handles.append(handle)
@@ -133,7 +133,7 @@ class Train:
         for data in tqdm(self.train_loader):
             d_img_org = data['d_img_org'].cuda()
             r_img_org = data['r_img_org'].cuda()
-            labels = data['score'].long().cuda()  # 改为long类型用于交叉熵损失
+            labels = data['score'].long().cuda()
 
             _x = self.vit(d_img_org)
             vit_eha = get_vit_feature(self.save_output)
@@ -164,7 +164,7 @@ class Train:
             pred = self.regressor(vit_eha, vit_ref, cnn_eha, cnn_ref)
 
             self.optimizer.zero_grad()
-            loss = self.criterion(pred, labels)  # 使用交叉熵损失
+            loss = self.criterion(pred, labels)
             losses.append(loss.item())
 
             loss.backward()
@@ -180,7 +180,7 @@ class Train:
         rho_p, _ = pearsonr(np.squeeze(pred_epoch), np.squeeze(labels_epoch))
 
         ret_loss = np.mean(losses)
-        logging.info('train epoch:{} / loss:{:.4} / SRCC:{:.4} / PLCC:{:.4}'.format(epoch + 1, ret_loss, rho_s, rho_p))
+        logging.info('train epoch:{} / loss:{:.4} / SROCC:{:.4} / PLCC:{:.4}'.format(epoch + 1, ret_loss, rho_s, rho_p))
 
         return ret_loss, rho_s, rho_p
 
