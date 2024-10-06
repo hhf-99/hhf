@@ -8,7 +8,7 @@
 To run the code, you need the following dependencies:
 - Linux
 - Python 3.9
-- pytorch==1.12.1
+- pytorch 1.12.1
 - timm 
 - torchvision
 - tqdm
@@ -33,7 +33,7 @@ data/
   
 ### Training the Model
 To train the SDMP-Net model, modify the configuration options in train_options.py as needed and run the following command:
-python train.py
+python base_options.py
 - train_ref_path data/train_ref
 - train_eha_path data/train_eha
 - train_list data/train_list.txt 
