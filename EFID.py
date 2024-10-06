@@ -18,7 +18,7 @@ class EFID(torch.utils.data.Dataset):
             for line in listFile:
                 eha, score = line[:-1].split(',')
                 # eha = eha[:-1]
-                ref = eha[7:13] + '.png'
+                ref = eha[0:5] + '.png'
                 score = float(score)
                 ref_files_data.append(ref)
                 eha_files_data.append(eha)
