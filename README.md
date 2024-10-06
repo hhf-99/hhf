@@ -36,10 +36,10 @@ To train the SDMP-Net model, modify the configuration options in train_options.p
 python base_options.py
 - train_ref_path data/train_ref
 - train_eha_path data/train_eha
-- train_list data/train_list.txt 
+- train_list data/Label_train_list.txt 
 - val_ref_path data/val_ref 
 - val_eha_path data/val_eha 
-- val_list data/val_list.txt
+- val_list data/Label_val_list.txt
     
 ## Configuration Options
 Modify the following key parameters in train_options.py:
@@ -53,4 +53,4 @@ Modify the following key parameters in train_options.py:
 During training, model checkpoints will be saved to the directory specified in the configuration file [checkpoints_dir](URL "title"). You can resume training from a specific epoch using the [--load_epoch](URL "title") option.
 
 ## Contact
-If you have any questions, please email 1779624166@qq.com
+If you have any questions, please email 1779624166@qq.com.
